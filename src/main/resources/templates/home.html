@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Taskette Management System</title>
+</head>
+
+<body>
+
+<h1>It Works!</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Tytuł</th>
+        <th>Opis</th>
+        <th>Data Utworzenia</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task: ${tasks}">
+        <td th:text="${task.id}"></td>
+        <td th:text="${task.title}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.createdAt}"></td>
+        <td>
+            <form action="#" th:action="@{/tasks/delete/{id}(id=${task.id})}" method="post">
+                <button type="submit">Usuń</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="#" th:object="${newTask}" th:action="@{/tasks}" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <label>
+            Tytuł
+            <input type="text" th:field="*{title}">
+        </label>
+    </fieldset>
+    <fieldset>
+        <label>
+            Opis
+            <textarea th:field="*{description}"></textarea>
+        </label>
+    </fieldset>
+    <fieldset>
+        <label>
+            Załącznik
+            <input type="file" name="attachment"/>
+        </label>
+    </fieldset>
+    <fieldset>
+        <label>
+            Opis Załącznika
+            <input type="text" th:field="*{attachmentComment}">
+        </label>
+    </fieldset>
+    <button type="submit">Dodaj</button>
+</form>
+
+</body>
+</html>

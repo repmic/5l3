@@ -1,0 +1,36 @@
+POST localhost:9000/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Zakonczyc lekcje nr 6",
+  "description": "Dokonczyc opowiadanie o tej lekcji"
+}
+
+###
+
+GET localhost:9000/api/tasks
+
+###
+
+DELETE localhost:9000/api/tasks/3
+
+###
+
+PUT localhost:9000/api/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Dokończyć Zadanie Z Modułu 1",
+  "description": "Zarejestrować się na Facebooku"
+}
+
+###
+
+POST localhost:9000/api/tasks/3/tags
+Content-Type: application/json
+
+{
+  "tagId": 3
+}
+
+###
